@@ -9,6 +9,8 @@ export default class Fixtures extends Component {
 		//Projects.insert(this.props.project._i, {
 		//	$set: {"votes": (this.props.project.votes||0)+1},
 		//});
+    console.log(this.props.name);
+
 	}
 
 

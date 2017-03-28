@@ -18,7 +18,8 @@ export class App extends Component {
   constructor(props){
     super(props);
     this.state ={
-      idLogueado: ''
+      idLogueado: '',
+			nombre:''
     };
   }
 
@@ -72,7 +73,8 @@ console.log("Query time");
   var user = Meteor.call('Users.buscarUsuario',response);
   console.log('siretorno:',user);
   console.log(response);
-  this.setState({idLogueado: response.userID});
+  this.setState({idLogueado: response.userID,
+	nombre:response.name});
   console.log(this.state.idLogueado);
   }
 
@@ -115,7 +117,7 @@ console.log("Query time");
 					</div>
 
 					<div> {this.state&&this.state.fixtures&&this.state.fixtures.map(fixture => {
-					  return <Fixture fixture={fixture} key={fixture.homeTeamName}  />
+					  return <Fixture fixture={fixture} key={fixture.homeTeamName} name={this.state.nombre}/>
 					                     })}
 					      </div>
 
