@@ -1,5 +1,5 @@
 import {Mongo} from "meteor/mongo";
-
+import {Meteor} from "meteor/meteor";
 
 export const Pollas = new Mongo.Collection("pollas");
 if (Meteor.isServer) {
@@ -13,10 +13,11 @@ if (Meteor.isServer) {
 }
 Meteor.methods({
 'Pollas.agregarPolla'(polla){
+  console.log(polla.name);
 
-    Users.insert({ "userName":polla.name ,
+    Pollas.insert({ "userName":polla.name ,
                    "local": polla.local,
-                   "visitante"; polla.visitante
+                   "visitante": polla.visitante
                    });
 
     // window.alert('You have been registered');

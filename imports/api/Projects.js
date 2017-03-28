@@ -11,7 +11,6 @@ if (Meteor.isServer) {
 
   });
 }
-
 Meteor.methods({
 	'Projects.votarPorProyecto'(pid){
 		if (! Meteor.userId()) {
