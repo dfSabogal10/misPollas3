@@ -18,7 +18,8 @@ export class App extends Component {
   constructor(props){
     super(props);
     this.state ={
-      idLogueado: ''
+      idLogueado: '',
+			nombre:''
     };
   }
 
@@ -72,7 +73,8 @@ console.log("Query time");
   var user = Meteor.call('Users.buscarUsuario',response);
   console.log('siretorno:',user);
   console.log(response);
-  this.setState({idLogueado: response.userID});
+  this.setState({idLogueado: response.userID,
+	nombre:response.name});
   console.log(this.state.idLogueado);
   }
 
@@ -96,31 +98,51 @@ console.log("Query time");
   }
   else {
     return(
-				<div>
+			<div>
+
+				<div className="fondo">
 					<h1>Mis pollas</h1>
-					<div className="row">
-						<div className="col-xs-8 col-md-8 ">
-							<DateRange
-										onInit={this.handleSelect}
-										onChange={this.handleSelect}
-								/>
-								<button onClick={this.getGames.bind(this)}>Ver Partidos</button>
+					<h3>Selecciona una fecha para hacer tu polla</h3>
+
+<br></br>
 
 
-						</div>
-						<div className="col-xs-4 col-md-4">
-							<h2>Apuesta a tus equipos favoritos con tus amigos</h2>
-						</div>
-
+					<div className="container-fluid">
+					  <div className="row centered">
+					    <div className="col-xs-2 col-md-2">
+					    </div>
+								<div className="col-xs-8 col-md-8 ">
+									<DateRange onInit={this.handleSelect} onChange={this.handleSelect}/>
+								</div>
+					    <div className="col-xs-2 col-md-2">
+					    </div>
+					  </div>
+					</div>
+					<div className="container-fluid">
+					  <div className="row centered">
+					    <div className="col-xs-6 col-md-3">
+					    </div>
+								<div className="col-xs-6 col-md-6 ">
+									<button onClick={this.getGames.bind(this)}  className="btn">Ver Partidos</button>
+								</div>
+					    <div className="col-xs-3 col-md-3">
+					    </div>
+					  </div>
 					</div>
 
+
+
+
 					<div> {this.state&&this.state.fixtures&&this.state.fixtures.map(fixture => {
-					  return <Fixture fixture={fixture} key={fixture.homeTeamName}  />
+					  return <Fixture fixture={fixture} key={fixture.homeTeamName} name={this.state.nombre}/>
 					                     })}
 					      </div>
 
 
+
 				</div>
+			</div>
+
 				);
   }
 

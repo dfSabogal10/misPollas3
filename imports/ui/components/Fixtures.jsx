@@ -6,9 +6,18 @@ import {Pollas} from "../../api/Pollas.js";
 export default class Fixtures extends Component {
 
   apostar() {
-		//Projects.insert(this.props.project._i, {
-		//	$set: {"votes": (this.props.project.votes||0)+1},
-		//});
+
+
+   var pollas = new Object();
+  pollas.name = this.props.name;
+  pollas.visitante  = this.refs.visitante.value;
+  pollas.local = this.refs.local.value;
+  var jsonString= JSON.stringify(pollas);
+  console.log(pollas);
+
+    var user = Meteor.call('Pollas.agregarPolla',jsonString);
+    console.log('siretorno:',user);
+
 	}
 
 
