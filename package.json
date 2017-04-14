@@ -12,6 +12,7 @@
     "bootstrap": "^3.3.7",
     "cors": "^2.8.1",
     "express": "^4.15.2",
+    "history": "^4.6.1",
     "http": "0.0.0",
     "meteor-node-stubs": "~0.2.4",
     "mongodb": "^2.2.25",
@@ -20,6 +21,8 @@
     "react-date-range": "^0.9.3",
     "react-dom": "^15.4.2",
     "react-facebook-login": "^3.5.0",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "request": "^2.81.0"
   },
   "devDependencies": {
