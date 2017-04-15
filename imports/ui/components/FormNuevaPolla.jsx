@@ -6,71 +6,49 @@ import { DateRange } from 'react-date-range';
 		var datestart = new moment('2014-11-11');
 		var dateend = new moment('2014-11-11');
 import Fixture from "./Fixtures.jsx";
+import {
+	BrowserRouter as Router,
+	Route,
+	Link
+} from 'react-router-dom';
 
 
 
-
-export default class Partidos extends Component {
+export default class FormNuevaPolla extends Component {
 	constructor(props){
 		super(props);
 		};
 
-	onChange(state) {
-		this.setState(state);
-	}
-	handleSelect(date){
-		datestart = new moment(date.startDate);
-		dateend = new moment(date.endDate);
-	}
 
-
-		getGames() {
-		var diasdiferencia =dateend.diff(datestart, 'days');
-
-		var month= datestart.format('MM');
-		var day =datestart.format('DD');
-		var year =datestart.format('YYYY');
-		var month2= dateend.format('MM');
-		var day2= dateend.format('DD');
-		var year2 =dateend.format('YYYY');
-		console.log(diasdiferencia);
-		if(diasdiferencia> 20)
-		{
-			alert("El maximo rango de fechas permitido es de 21 dias");
-		}
-		else {
-	console.log("Query time");
-	 Meteor.call('getGame',
-																	 day: day,
-																	 month:month,
-																	 year:year,
-																	 day2: day2,
-																	 month2:month2,
-																	 year2:year2,
-
-																	(err, res) =>{
-																		if (err) { console.log(err); }
-	else {
-		console.log("made it!");
-		console.log(res.data.fixtures);
-		this.setState({fixtures: res.data.fixtures});
-
-	}
-
-																	});
-																}
+	crearPolla(){
+		var idPartido=this.props.match.params.idPartido;
 	}
 	render() {
 
+		console.log(this.props.match.params.idPartido);
 
 		return(
 			<section>
-			<h3>Selecciona un rango de fechas para ver partidos</h3>
+			<h3>Crear Nueva Polla</h3>
 
 			<br></br>
+			<form>
+			  <div className="form-group">
+			    <label htmlFor="nombre">Nombre Polla</label>
+			    <input type="text" className="form-control" id="nombre"/>
+			  </div>
+			  <div className="form-group">
+			    <label htmlFor="monto">Monto</label>
+			    <input type="number" className="form-control" id="monto"/>
+			  </div>
+				<div className="form-group">
+			    <label htmlFor="usuarios">UsuariosAInvitar</label>
+			    <input type="text" className="form-control" id="usuarios"/>
+			  </div>
+			  <button type="submit" onClick={this.crearPolla.bind(this)} className="btn-primary"><Link to="/verPartidos">Crear</Link></button>
+			</form>
 
-
-			<div className="container">
+			{/* <div className="container">
 				<div className="row">
 				<div className="col-md-4">
 					<div className="col-xs-2 col-md-2">
@@ -95,7 +73,7 @@ export default class Partidos extends Component {
 					</div>
 			</div>
 		</div>
-		</div>
+		</div> */}
 		</section>
 
 

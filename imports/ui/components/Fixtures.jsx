@@ -1,28 +1,33 @@
 import React, {Component, PropTypes} from "react";
 import {Meteor} from "meteor/meteor";
 import {Pollas} from "../../api/Pollas.js";
+import {
+	BrowserRouter as Router,
+	Route,
+	Link
+} from 'react-router-dom';
 
 
 export default class Fixtures extends Component {
 
-  apostar() {
+  crearPolla() {
 
 
-   var pollas = new Object();
-  pollas.name = this.props.name;
-  pollas.visitante  = this.refs.visitante.value;
-  pollas.local = this.refs.local.value;
-  var jsonString= JSON.stringify(pollas);
-  console.log(pollas);
-
-    var user = Meteor.call('Pollas.agregarPolla',jsonString);
-    console.log('siretorno:',user);
+  //  var pollas = new Object();
+  // pollas.name = this.props.name;
+  // pollas.visitante  = this.refs.visitante.value;
+  // pollas.local = this.refs.local.value;
+  // var jsonString= JSON.stringify(pollas);
+  // console.log(pollas);
+  //
+  //   var user = Meteor.call('Pollas.agregarPolla',jsonString);
+  //   console.log('siretorno:',user);
 
 	}
 
 
     render(){
-      console.log(this.props.fixture);
+      console.log(this.props.fixture._links.self.href);
       if (this.props.fixture.status ==="FINISHED")
       {
         return (
@@ -123,7 +128,7 @@ export default class Fixtures extends Component {
           <h5>{this.props.fixture.awayTeamName}</h5>
         </div>
       </div>
-      <div className="row">
+      {/* <div className="row">
         <div className="col-md-3 local-column">
           <input type="number" ref="local" />
         </div>
@@ -133,14 +138,12 @@ export default class Fixtures extends Component {
         <div className="col-md-3">
           <input type="number" ref="visitante" />
         </div>
-      </div>
+      </div> */}
       <div className="row">
         <div className="col-md-3 local-column">
         </div>
         <div className="col-md-2 middle-column">
-          <button className="btn-primary" onClick={this.apostar.bind(this)}>Apostar</button>
-
-          <button className="btn-default" onClick={this.apostar.bind(this)}>Compartir</button>
+          <button className="btn-primary" onClick={this.crearPolla.bind(this)}><Link to={"/FormNuevaPolla/"+this.props.fixture._links.self.href.split("/")[5]} >Crear Polla</Link></button>
         </div>
       </div>
       <div className="row">

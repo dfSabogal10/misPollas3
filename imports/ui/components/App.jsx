@@ -8,7 +8,9 @@ import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import FacebookLogin from 'react-facebook-login';
 import Partidos from "./Partidos.jsx";
 import Navbar from  "./Navbar.jsx";
-import Home from "./Home.jsx"
+import Home from "./Home.jsx";
+import FormNuevaPolla from "./FormNuevaPolla.jsx";
+
 
 		import {
 		  BrowserRouter as Router,
@@ -69,6 +71,7 @@ export class App extends Component {
 
 		      <Route exact path="/" component={Home}/>
 		      <Route path="/verPartidos" component={Partidos}/>
+					<Route path="/FormNuevaPolla/:idPartido" component={FormNuevaPolla}/>
 					<Route path="/Pollas" component={Pollas}/>
 					<Route path="/Invitaciones a pollas" />
 					<Route path="/Perfil" />
