@@ -4,8 +4,8 @@ import {createContainer} from "meteor/react-meteor-data";
 import {Projects} from "../../api/Projects.js"
 import {Users} from "../../api/Users.js"
 import Pollas from "./Pollas.jsx";
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
-import FacebookLogin from 'react-facebook-login';
+import AccountsUIWrapper from "./AccountsUIWrapper.jsx";
+import FacebookLogin from "react-facebook-login";
 import Partidos from "./Partidos.jsx";
 import Navbar from  "./Navbar.jsx";
 import Home from "./Home.jsx";
@@ -16,7 +16,11 @@ import FormNuevaPolla from "./FormNuevaPolla.jsx";
 		  BrowserRouter as Router,
 		  Route,
 		  Link
-		} from 'react-router-dom'
+		} from "react-router-dom"
+
+
+
+
 
 
 export class App extends Component {
@@ -24,24 +28,29 @@ export class App extends Component {
   constructor(props){
     super(props);
     this.state ={
-      idLogueado: '',
-			nombre:''
+      idLogueado: "123",
+			nombre:""
     };
+
+		localStorage.setItem("user", JSON.stringify(this.state.idLogueado));
+
   }
 
 
   responseFacebook(response){
-  var user = Meteor.call('Users.buscarUsuario',response);
-  console.log('siretorno:',user);
+  var user = Meteor.call("Users.buscarUsuario",response);
+  console.log("siretorno:",user);
   console.log(response);
   this.setState({idLogueado: response.userID,
 	nombre:response.name});
+	localStorage.setItem("user", JSON.stringify(this.state.idLogueado));
+
   console.log(this.state.idLogueado);
   }
 
 
 	render() {
-  //   if(this.state.idLogueado== '')
+  //   if(this.state.idLogueado== "")
   //   {
   //   return (
 	// 		<section>
@@ -71,7 +80,7 @@ export class App extends Component {
 
 		      <Route exact path="/" component={Home}/>
 		      <Route path="/verPartidos" component={Partidos}/>
-					<Route path="/FormNuevaPolla/:idPartido" component={FormNuevaPolla}/>
+					<Route path="/FormNuevaPolla/:idPartido/:homeTeamName/:awayTeamName" component={FormNuevaPolla} />
 					<Route path="/Pollas" component={Pollas}/>
 					<Route path="/Invitaciones a pollas" />
 					<Route path="/Perfil" />
@@ -98,8 +107,8 @@ App.propTypes = {
 
 
 export default AppContainer = createContainer(()=>{
-	Meteor.subscribe('projects');
-  Meteor.subscribe('usuarios');
+	Meteor.subscribe("projects");
+  Meteor.subscribe("usuarios");
 
 
 	return {

@@ -5,7 +5,7 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Link
-} from 'react-router-dom';
+} from "react-router-dom";
 
 
 export default class Fixtures extends Component {
@@ -20,8 +20,8 @@ export default class Fixtures extends Component {
   // var jsonString= JSON.stringify(pollas);
   // console.log(pollas);
   //
-  //   var user = Meteor.call('Pollas.agregarPolla',jsonString);
-  //   console.log('siretorno:',user);
+  //   var user = Meteor.call("Pollas.agregarPolla",jsonString);
+  //   console.log("siretorno:",user);
 
 	}
 
@@ -102,7 +102,7 @@ export default class Fixtures extends Component {
         {/* <div className="col-md-3 local-column">
         </div> */}
         <div className="col-md-3 middle-column">
-          {this.props.fixture.date.split("T")[0] + '\t'+"-"+'\t'+this.props.fixture.date.split("T")[1].substring(0,5)}
+          {this.props.fixture.date.split("T")[0] + "\t"+"-"+"\t"+this.props.fixture.date.split("T")[1].substring(0,5)}
         </div>
         {/* <div className="col-md-3">
         </div> */}
@@ -143,7 +143,7 @@ export default class Fixtures extends Component {
         <div className="col-md-3 local-column">
         </div>
         <div className="col-md-2 middle-column">
-          <button className="btn-primary" onClick={this.crearPolla.bind(this)}><Link to={"/FormNuevaPolla/"+this.props.fixture._links.self.href.split("/")[5]} >Crear Polla</Link></button>
+          <button className="btn-primary" onClick={this.crearPolla.bind(this)}><Link to={"/FormNuevaPolla/"+this.props.fixture._links.self.href.split("/")[5]+"/"+this.props.fixture.homeTeamName+"/"+this.props.fixture.awayTeamName } >Crear Polla</Link></button>
         </div>
       </div>
       <div className="row">
