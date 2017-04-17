@@ -44,10 +44,7 @@ export default class Pollas extends Component {
 					<div>
 						 {this.state&&this.state.mispollas&&this.state.mispollas.map(mipolla => {
 											return <MiPolla mipolla={mipolla} key={mipolla.nombre} />
-																				 })}
-
-
-
+						})}
 					</div>
 				</div>
 

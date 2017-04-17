@@ -13,7 +13,7 @@ Meteor.methods({
     {
       this.unblock();
       var apiUrl = 'http://api.football-data.org/v1/competitions/440/fixtures?timeFrameStart='+year+'-'+month+'-'+day+'&timeFrameEnd='+year2+'-'+month2+'-'+day2
-      return   Meteor.http.call("GET",apiUrl);
+      return   Meteor.http.call("GET",apiUrl,{headers: {"X-Auth-Token": "4e27969f48ad48f1b60ac94fb6677aa5"}});
 }
 }
 );

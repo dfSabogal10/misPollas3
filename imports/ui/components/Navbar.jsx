@@ -11,12 +11,7 @@ import {
 
 export default class Navbar extends Component {
 
-votarPorProyecto(){
-	Meteor.call('Projects.votarPorProyecto',this.props.project._id);
-}
-añadirAFavoritos(){
-	Meteor.call('Projects.añadirAFavoritos',this.props.project._id);
-}
+
 	render() {
 
 
