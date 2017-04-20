@@ -2,6 +2,12 @@ import {Mongo} from "meteor/mongo";
 import {Meteor} from "meteor/meteor";
 import {HTTP} from 'meteor/http'
 
+/**
+**  Code review (José Felipe Quiroga): No se si estoy en el repositorio que es, pero no veo las pruebas. Aunque para mi me parece que esta
+**  bien la usabilidad, seria bueno tener alguna documentación sobre eso: tal vez pruebas con personas. De resto me parece que esta bien 
+**  en el aspecto de seguridad (llamados a facebook) y los metodos modularizados.
+**/
+
 export const Pollas = new Mongo.Collection("pollas");
 if (Meteor.isServer) {
 
