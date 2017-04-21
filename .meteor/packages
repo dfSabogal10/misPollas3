@@ -27,3 +27,6 @@ accounts-password
 twbs:bootstrap
 joshowens:shareit
 http
+practicalmeteor:mocha
+dispatch:mocha-browser
+xolvio:cleaner

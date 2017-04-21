@@ -1,6 +1,6 @@
 import {Mongo} from "meteor/mongo";
 import {Meteor} from "meteor/meteor";
-import {HTTP} from 'meteor/http'
+import {HTTP} from "meteor/http"
 
 export const Pollas = new Mongo.Collection("pollas");
 if (Meteor.isServer) {
@@ -14,6 +14,8 @@ if (Meteor.isServer) {
 }
 Meteor.methods({
 "Pollas.agregarPolla"(polla){
+  console.log(polla);
+
 var polluela = JSON.parse(polla)
 Pollas.insert({ "usuarioInvita":polluela.usuariosInvitar,
                    "monto": polluela.monto,
@@ -64,8 +66,14 @@ return "Agregado";
                 }
 
           },
+          getGame:function(day,month,year,day2,month2,year2)
+            {
+              this.unblock();
+              var apiUrl = "http://api.football-data.org/v1/competitions/440/fixtures?timeFrameStart="+year+"-"+month+"-"+day+"&timeFrameEnd="+year2+"-"+month2+"-"+day2
+              return   Meteor.http.call("GET",apiUrl);
+        },
       "Pollas.darPartido"(idPartido){
-        var apiUrl = 'http://api.football-data.org/v1/fixtures/'+idPartido;
+        var apiUrl = "http://api.football-data.org/v1/fixtures/"+idPartido;
         return   Meteor.http.call("GET",apiUrl,{headers: {"X-Auth-Token": "4e27969f48ad48f1b60ac94fb6677aa5"}});
 
 
