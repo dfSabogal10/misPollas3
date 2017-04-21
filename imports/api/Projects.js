@@ -1,3 +1,5 @@
+//Eliminen esta clase del peerGrader a menos que la estén usando para misPollas3
+
 import {Mongo} from "meteor/mongo";
 
 

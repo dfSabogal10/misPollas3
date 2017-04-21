@@ -1,44 +1,45 @@
-import React, {Component, PropTypes} from "react";
-import {Meteor} from "meteor/meteor";
-import {Projects} from "../../api/Projects.js";
+// Eliminar declaraciones del import si no las van a usar
+import React, {Component, PropTypes} from 'react';
+import {Meteor} from 'meteor/meteor';
+import {Projects} from '../../api/Projects.js';
 import {
-	BrowserRouter as Router,
-	Route,
-	Link
+    BrowserRouter as Router,
+    Route,
+    Link
 } from 'react-router-dom';
 
 
-
+// Indentación
 export default class Navbar extends Component {
 
 
-	render() {
+    render() {
 
 
-		return (
-			<section>
-			<nav className="navbar navbar-inverse">
-  			<div className="container-fluid">
-    			<div className="navbar-header">
-			      <a className="navbar-brand" href="/">Mis Pollas</a>
-    			</div>
-    			<ul className="nav navbar-nav">
-      		<li className="active"><Link to="/">Home</Link></li>
-      		<li><Link to="/verPartidos">Ver Partidos</Link></li>
-      		<li><Link to="/Pollas">Pollas</Link></li>
-      		<li><Link to="/Invitaciones a pollas">Invitaciones a pollas</Link></li>
-					<li><Link to="/Perfil">Perfil</Link></li>
-				</ul>
-  			</div>
-			</nav>
+        return (
+            <section>
+            <nav className="navbar navbar-inverse">
+            <div className="container-fluid">
+                <div className="navbar-header">
+                  <a className="navbar-brand" href="/">Mis Pollas</a>
+                </div>
+                <ul className="nav navbar-nav">
+            <li className="active"><Link to="/">Home</Link></li>
+            <li><Link to="/verPartidos">Ver Partidos</Link></li>
+            <li><Link to="/Pollas">Pollas</Link></li>
+            <li><Link to="/Invitaciones a pollas">Invitaciones a pollas</Link></li>
+                    <li><Link to="/Perfil">Perfil</Link></li>
+                </ul>
+            </div>
+            </nav>
 
-		</section>
-		);
-	}
+        </section>
+        );
+    }
 }
 
 
 
 // Nav.propTypes = {
-// 	project: PropTypes.object.isRequired
+//  project: PropTypes.object.isRequired
 // }
