@@ -1,16 +1,17 @@
-import React, {Component, PropTypes} from "react";
-import {Meteor} from "meteor/meteor";
-import {Pollas} from "../../api/Pollas.js";
+// Eliminar los imports no usados
+import { Component } from 'react';
+import { Meteor } from 'meteor/meteor';
+import { Pollas } from '../../api/Pollas.js';
 import {
 	BrowserRouter as Router,
 	Route,
 	Link
-} from "react-router-dom";
+} from 'react-router-dom';
 
-
+// Tener cuidado con la indentación
 export default class Fixtures extends Component {
 
-  crearPolla() {
+    crearPolla() {
 
 
   //  var pollas = new Object();
@@ -23,14 +24,14 @@ export default class Fixtures extends Component {
   //   var user = Meteor.call("Pollas.agregarPolla",jsonString);
   //   console.log("siretorno:",user);
 
-	}
+    }
 
 
     render(){
-      console.log(this.props.fixture._links.self.href);
-      if (this.props.fixture.status ==="FINISHED")
+        console.log(this.props.fixture._links.self.href);
+        if (this.props.fixture.status ==='FINISHED')
       {
-        return (
+            return (
 
         <table className="fixes">
         <thead>
@@ -40,9 +41,6 @@ export default class Fixtures extends Component {
              <th>Fecha</th>
              <th>Jornada</th>
              <th></th>
-
-
-
          </tr>
         </thead>
         <tbody>
@@ -57,11 +55,11 @@ export default class Fixtures extends Component {
         </tbody>
 
         </table>
-  );
-      }
-      else {
+            );
+        }
+        else {
 
-      return (
+            return (
   //               <table className="fixes">
   //               <thead>
   //                <tr>
@@ -102,7 +100,7 @@ export default class Fixtures extends Component {
         {/* <div className="col-md-3 local-column">
         </div> */}
         <div className="col-md-3 middle-column">
-          {this.props.fixture.date.split("T")[0] + "\t"+"-"+"\t"+this.props.fixture.date.split("T")[1].substring(0,5)}
+          {this.props.fixture.date.split('T')[0] + '\t'+'-'+'\t'+this.props.fixture.date.split('T')[1].substring(0,5)}
         </div>
         {/* <div className="col-md-3">
         </div> */}
@@ -143,7 +141,7 @@ export default class Fixtures extends Component {
         <div className="col-md-3 local-column">
         </div>
         <div className="col-md-2 middle-column">
-          <button className="btn-primary" onClick={this.crearPolla.bind(this)}><Link to={"/FormNuevaPolla/"+this.props.fixture._links.self.href.split("/")[5]+"/"+this.props.fixture.homeTeamName+"/"+this.props.fixture.awayTeamName } >Crear Polla</Link></button>
+          <button className="btn-primary" onClick={this.crearPolla.bind(this)}><Link to={'/FormNuevaPolla/'+this.props.fixture._links.self.href.split('/')[5]+'/'+this.props.fixture.homeTeamName+'/'+this.props.fixture.awayTeamName } >Crear Polla</Link></button>
         </div>
       </div>
       <div className="row">
@@ -154,15 +152,5 @@ export default class Fixtures extends Component {
   </div>
           );
         }
-
-
-
-
-
-
-
-
-
-
     }
   }
